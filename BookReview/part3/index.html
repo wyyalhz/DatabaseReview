@@ -817,7 +817,16 @@
           <li class="md-nav__item">
   <a href="#46" class="md-nav__link">
     <span class="md-ellipsis">
-      4.6
+      4.6 封锁粒度
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.7 多粒度封锁需要解决的问题，意向锁
     </span>
   </a>
   
@@ -1304,7 +1313,16 @@
           <li class="md-nav__item">
   <a href="#46" class="md-nav__link">
     <span class="md-ellipsis">
-      4.6
+      4.6 封锁粒度
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.7 多粒度封锁需要解决的问题，意向锁
     </span>
   </a>
   
@@ -1674,7 +1692,7 @@ BEGIN TRANSACTION
 <p>·<strong>数据转储</strong>和<strong>登记日志文件</strong>。通常一起使用</p>
 <h3 id="34">3.4 了解数据转储的基本方法</h3>
 <p>·DBA定期地将整个数据库复制到磁带或领一个磁盘上保存，后背副本，只能将数据库恢复到转储时的状态</p>
-<p><img src="/image/3-3-4-1.jpg" width=800></p>
+<p><img alt="3-3-4-1.jpg" src="../assets/images/3-3-4-1.jpg" /></p>
 <ul>
 <li>
 <p>静态存储：在系统中无运行事务时进行存储，但过程中不允许存取、修改数据库</p>
@@ -1801,7 +1819,69 @@ BEGIN TRANSACTION
 <p>问题：降低了系统的并发度，很难事先精确地确定每个事务要封锁的对象</p>
 </li>
 </ul>
-<h3 id="46">4.6</h3>
+<p><strong>两阶段封锁协议</strong>
+- 任何事务在对数据进行操作前必须先获得锁
+- 一个事务所有的封锁操作都在第一个解锁操作之前</p>
+<p>·事物的执行分为两个阶段
+- 第一阶段：获得锁阶段，也称为扩张阶段，事务可以申请获得任何数据上任何类型的锁，也可以进行锁的升级转换，但不能释放任何锁
+- 第二阶段：释放锁阶段，也称为收缩阶段，事务可以释放任何数据项上的任何类型的锁，也可以进行锁的降级转换，但是不能再申请任何锁。</p>
+<table>
+<thead>
+<tr>
+<th>图示</th>
+<th>举例</th>
+<th>死锁情况</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="3-4-5-2.jpg" src="../assets/images/3-4-5-2.jpg" /></td>
+<td><img alt="3-4-5-3.jpg" src="../assets/images/3-4-5-3.jpg" /></td>
+<td><img alt="3-4-5-4.jpg" src="../assets/images/3-4-5-4.jpg" /></td>
+</tr>
+<tr>
+<td></td>
+<td>所遵守两阶段封锁协议的事务，其并行执行的结果也一定是正确的，是可串行化调度的充分条件</td>
+<td>不能避免死锁，因为并不要求事务必须一次将所有要用的数据全部加锁</td>
+</tr>
+</tbody>
+</table>
+<p>·为了避免死锁，采用一次封锁法，将2PL改成保守的2PL：事务在操作执行前获得所有操作数据上的锁，一次性封锁所有数据项，否则等待。不会产生死锁，但难以实现，因为修要预先知道事务所需要处理的数据。</p>
+<h3 id="46">4.6 封锁粒度</h3>
+<p><strong>封锁粒度</strong>：封锁对象的大小
+- 逻辑单元：属性列、元组、关系（表）、索引项、整个索引、整个数据库等
+- 物理单元：页（数据页或索引页）、物理记录、数据库存储空间等</p>
+<p><font color=red>
+·封锁粒度越小，并发度越高，需要的锁越多，系统开销越大</p>
+<p>·封锁粒度越大，并发度越低，需要的锁越少，系统开销越小
+</font></p>
+<p><strong>多粒度树</strong>：以树形结构来表示多级封锁粒度，根节点是整个数据库表示最大的数据粒度</p>
+<p><strong>多粒度封锁协议</strong>：
+- 允许多粒度树中的每个结点被独立地枷锁
+- 对一个结点加锁意味着这个结点的所有后裔节点也被加以同样类型的锁
+- 两种封锁方式（效果一样）：<strong>显示封锁</strong>是直接加到数据对象上的封锁，<strong>隐式封锁</strong>是由于其上级结点加锁而使该数据对象加上了锁</p>
+<h3 id="47">4.7 多粒度封锁需要解决的问题，意向锁</h3>
+<p>·<font color=red>既要检查显示封锁，还要检查隐式封锁，检查的内容多、效率低</font></p>
+<p><strong>意向锁</strong>
+- 对任一结点加基本所，必须先对他的上层结点加意向锁；
+- 如果对一个结点加意向锁，则说明该结点的某个下层结点正在被加锁</p>
+<p><strong>意向共享锁IS锁</strong>：如果对一个数据加IS锁，表示它的后裔节点拟（意向）加S锁</p>
+<p><strong>意向排它锁IX锁</strong>：如果对一个数据加IX锁，表示它的后裔节点拟（意向）加X锁</p>
+<p><strong>共享意向排它锁SIX锁</strong>：如果对一个数据加SIX锁，表示对它加S锁，再加IX锁，即SIX=S+IX（该事务要读整个表，同时会更新个别元组）</p>
+<table>
+<thead>
+<tr>
+<th>相容性和封锁强度</th>
+<th>封锁方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="3-4-7-1.jpg" src="../assets/images/3-4-7-1.jpg" /></td>
+<td><img alt="3-4-7-2.jpg" src="../assets/images/3-4-7-2.jpg" /></td>
+</tr>
+</tbody>
+</table>
 
 
 
