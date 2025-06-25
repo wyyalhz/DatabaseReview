@@ -1,0 +1,2584 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="wyyalhz">
+      
+      
+      
+        <link rel="prev" href="../part1/">
+      
+      
+        <link rel="next" href="../part3/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>二、关系数据库 - BIT数据库期末复习</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="BIT数据库期末复习" class="md-header__button md-logo" aria-label="BIT数据库期末复习" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BIT数据库期末复习
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              二、关系数据库
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../overview/" class="md-tabs__link">
+          
+  
+  
+  课本复习
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="BIT数据库期末复习" class="md-nav__button md-logo" aria-label="BIT数据库期末复习" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    BIT数据库期末复习
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    课本复习
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            课本复习
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    课本总览
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    一、数据库的基本概念
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    二、关系数据库
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    二、关系数据库
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.关系模型的基本概念、关系运算
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.关系模型的基本概念、关系运算">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 关系模型的组成
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 关系的基本概念
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 关系的基本性质
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4 实体完整性和参照完整性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.5 关系代数基本运算
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.6 用关系代数表达查询
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.7 元素关系演算和域关系演算
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.关系数据库标准语言SQL语言
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.关系数据库标准语言SQL语言">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 SQL语言的特点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 SQL中的基本概念：基本表和视图
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-sqlddl" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 SQL的DDL语句、定义基本表和视图
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 唯一索引和聚集索引、定义索引
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5 SQL查询
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.5 SQL查询">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      单表查询
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="单表查询">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where" class="md-nav__link">
+    <span class="md-ellipsis">
+      where语句常用查询条件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      聚集函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      对查询结果分组
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wherehaving" class="md-nav__link">
+    <span class="md-ellipsis">
+      WHERE和HAVING的区别
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      连接查询
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="连接查询">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      普通连接
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      内连接
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      外连接
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      复合条件连接
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      多表连接
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      嵌套查询
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="嵌套查询">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#in" class="md-nav__link">
+    <span class="md-ellipsis">
+      带有IN谓词的子查询
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      带有比较运算符的子查询
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anyall" class="md-nav__link">
+    <span class="md-ellipsis">
+      带有ANY和ALL谓词的子查询
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#existsnot-exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      带有EXISTS和NOT EXISTS谓词的子查询
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="带有EXISTS和NOT EXISTS谓词的子查询">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exist" class="md-nav__link">
+    <span class="md-ellipsis">
+      用EXIST实现逻辑蕴含
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6 SQL数据更新：插入、删除、修改
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      插入
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      修改
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      删除
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7 视图消解、视图查询
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.8 SQL不同对象的权限
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#29-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.9 嵌入式SQL的一些基本概念
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.9 嵌入式SQL的一些基本概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      嵌入式SQL的编译
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据库和主语言程序间的通信
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据库和主语言程序间的数据交换
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      面向集合和面向记录的协调
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#210-select" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.10 不用游标和使用游标的SELECT语句
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#211-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.11 熟练掌握各个SQL语句的语法、关键词的含义
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.关系系统及其查询优化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.关系系统及其查询优化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 查询处理的过程，优化的意义和必要性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 理解关系操作的基本实现算法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 理解关系操作的基本实现算法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      选择
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      连接
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      投影
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      集合运算
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 理解查询优化步骤，估计询执行代价
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 理解查询优化步骤，估计询执行代价">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      计算处理时间：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 理解查询优化的一般准则
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5 代数优化，画关系代数表达式的语法树，优化语法树
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    三、数据控制
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    四、数据库设计
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    五、数据库新技术
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.关系模型的基本概念、关系运算
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.关系模型的基本概念、关系运算">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 关系模型的组成
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 关系的基本概念
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 关系的基本性质
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4 实体完整性和参照完整性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.5 关系代数基本运算
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.6 用关系代数表达查询
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.7 元素关系演算和域关系演算
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.关系数据库标准语言SQL语言
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.关系数据库标准语言SQL语言">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 SQL语言的特点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 SQL中的基本概念：基本表和视图
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-sqlddl" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 SQL的DDL语句、定义基本表和视图
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 唯一索引和聚集索引、定义索引
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5 SQL查询
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.5 SQL查询">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      单表查询
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="单表查询">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where" class="md-nav__link">
+    <span class="md-ellipsis">
+      where语句常用查询条件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      聚集函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      对查询结果分组
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wherehaving" class="md-nav__link">
+    <span class="md-ellipsis">
+      WHERE和HAVING的区别
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      连接查询
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="连接查询">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      普通连接
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      内连接
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      外连接
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      复合条件连接
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      多表连接
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      嵌套查询
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="嵌套查询">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#in" class="md-nav__link">
+    <span class="md-ellipsis">
+      带有IN谓词的子查询
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      带有比较运算符的子查询
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anyall" class="md-nav__link">
+    <span class="md-ellipsis">
+      带有ANY和ALL谓词的子查询
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#existsnot-exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      带有EXISTS和NOT EXISTS谓词的子查询
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="带有EXISTS和NOT EXISTS谓词的子查询">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exist" class="md-nav__link">
+    <span class="md-ellipsis">
+      用EXIST实现逻辑蕴含
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6 SQL数据更新：插入、删除、修改
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      插入
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      修改
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      删除
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7 视图消解、视图查询
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.8 SQL不同对象的权限
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#29-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.9 嵌入式SQL的一些基本概念
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.9 嵌入式SQL的一些基本概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      嵌入式SQL的编译
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据库和主语言程序间的通信
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据库和主语言程序间的数据交换
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      面向集合和面向记录的协调
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#210-select" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.10 不用游标和使用游标的SELECT语句
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#211-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.11 熟练掌握各个SQL语句的语法、关键词的含义
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.关系系统及其查询优化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.关系系统及其查询优化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 查询处理的过程，优化的意义和必要性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 理解关系操作的基本实现算法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 理解关系操作的基本实现算法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      选择
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      连接
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      投影
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      集合运算
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 理解查询优化步骤，估计询执行代价
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 理解查询优化步骤，估计询执行代价">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      计算处理时间：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 理解查询优化的一般准则
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5 代数优化，画关系代数表达式的语法树，优化语法树
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">二、关系数据库</h1>
+<h2 id="1">1.关系模型的基本概念、关系运算</h2>
+<h3 id="11">1.1 关系模型的组成</h3>
+<p>·关系的型成为关系模式，关系模式是对关系的描述，包括关系名、属性名、属性的类型和长度、以及属性间固有的数据关联关系。</p>
+<p>·关系模式一般简记为关系名和属性名的集合R(A1,A2,...,An)，例如：图书(书号，书名，作者，单价，出版社)</p>
+<p>·关系的值是元组的集合，称为关系，关系模式R上的一个关系通常写为r(R)</p>
+<table>
+<thead>
+<tr>
+<th>关系与关系模式</th>
+<th>关系模式的形式化表示</th>
+<th>关系数据库模式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="\image\2-1-1-1.jpg" width="500"></td>
+<td><img src="\image\2-1-1-2.jpg" width="500"></td>
+<td><img src="\image\2-1-1-3.jpg" width="500"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="12">1.2 关系的基本概念</h3>
+<p><strong>笛卡尔积</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>笛卡尔积</th>
+<th>元组、分量、域</th>
+<th>基数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="\image\2-1-2-1.jpg" width="500"></td>
+<td><img src="\image\2-1-2-2.jpg" width="500"></td>
+<td><image src="\image\2-1-2-3.jpg" width="500"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>键</strong>：能够惟一标识元组的属性或属性组</p>
+<p><strong>候选键</strong>：关系中能够起到标识作用的键，可能有多个</p>
+<p><strong>主键</strong>：若有多个候选键，则选定其中一个作为主键</p>
+<p><strong>联合键</strong>：由关系的多个属性组成的键</p>
+<p><strong>全键</strong>：由关系的所有属性组成的键</p>
+<p><strong>主属性</strong>：候选键中的属性</p>
+<p><strong>非主属性</strong>：不包含在任何候选键中的属性</p>
+<p><strong>外键</strong>：当前关系的某个属性是另一个关系的键。外键不一定要与相应的主键同名</p>
+<p><strong>关系</strong>：笛卡尔积的子集，有限元组的集合，规范化了的二维表行的集合</p>
+<h3 id="13">1.3 关系的基本性质</h3>
+<p>·列是同质的</p>
+<p>·不同的列可出自同一个域</p>
+<p>·列的次序是无关紧要的</p>
+<p>·元组的每个分量都是原子的</p>
+<p>·元组的次序是无关紧要的</p>
+<p>·各个元组都是不同的</p>
+<h3 id="14">1.4 实体完整性和参照完整性</h3>
+<p>·称为<font color=red> 称为关系的两个不变性 </font>，由关系系统自动支持</p>
+<p><strong>空值</strong>：“不知道”、“不存在”或“无意义”的值。</p>
+<p><strong>实体完整性约束</strong>：对<ins>主键</ins>的约束，作为键的各个属性的值不能为空，主键的值不能为空或部分为空</p>
+<p><strong>参照完整性约束</strong>：对<ins>外键</ins>的约束，外键的值必须是另一个关系的主键值或空值</p>
+<p><strong>参照</strong>：某个关系与另一个关系通过定义在同一个域上的属性而建立的联系。<strong>参照关系</strong>：例如R1包含外键；<strong>被参照关系</strong>：例如R2主键</p>
+<h3 id="15">1.5 关系代数基本运算</h3>
+<p>·传统的集合运算：并、差、交、广义笛卡尔积</p>
+<p>·专门的关系运算：选择、投影、连接、除</p>
+<p><strong>并</strong>：属于R或属于S的元组的集合</p>
+<p><strong>差</strong>：属于R但不属于S的元组的集合</p>
+<p><strong>交</strong>：既属于R又属于S的元组的集合</p>
+<p><strong>笛卡尔积</strong>：R中所有元组与S中所有元组的拼接</p>
+<p><strong>选择、投影、连接</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>选择</th>
+<th>投影</th>
+<th>连接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="\image\2-1-5-1.jpg" width="500"></td>
+<td><img src="\image\2-1-5-2.jpg" width="500"></td>
+<td><img src="\image\2-1-5-3.jpg" width="500"></td>
+</tr>
+<tr>
+<td>选择满足一定条件的元组子集，是从行的角度进行的运算</td>
+<td>选择出若干列，即R中元组在属性集X上的值，是从列的角度进行运算</td>
+<td>将两个关系中满足条件的元组拼接起来形成新元组的集合</td>
+</tr>
+</tbody>
+</table>
+<p><strong>等值连接、自然连接</strong></p>
+<table>
+<thead>
+<tr>
+<th>等值连接</th>
+<th>自然连接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="\image\2-1-5-4.jpg" width="800"></td>
+<td><img src="\image\2-1-5-5.jpg" width="800"></td>
+</tr>
+<tr>
+<td>连接条件是两个属性值的相等比较</td>
+<td>结果中把重复的属性列去掉</td>
+</tr>
+</tbody>
+</table>
+<p><strong>除法运算</strong></p>
+<table>
+<thead>
+<tr>
+<th>象集</th>
+<th>除法</th>
+<th>通俗理解</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="\image\2-1-5-6.jpg" width="500"></td>
+<td><img src="\image\2-1-5-7.jpg" width="500"></td>
+<td><img src="\image\2-1-5-8.jpg" width="500"></td>
+</tr>
+<tr>
+<td>表示R中属性组X上值为x的诸元组在Z分量上的取值的集合</td>
+<td>元组在A分量上的值a的象集包含S在(B, C)上投影的集合</td>
+<td>R的属性中去掉与S相同的属性后剩下的其他属性 ，同时从行和列的角度进行计算</td>
+</tr>
+</tbody>
+</table>
+<p><strong>左外连接、右外连接、完全外连接</strong></p>
+<table>
+<thead>
+<tr>
+<th>左外连接</th>
+<th>右外连接</th>
+<th>完全外连接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="\image\2-1-5-9.jpg" width="500"></td>
+<td><img src="\image\2-1-5-10.jpg" width="500"></td>
+<td><img src="\image\2-1-5-11.jpg" width="500"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="16">1.6 用关系代数表达查询</h3>
+<p>·典型检索实例</p>
+<table>
+<thead>
+<tr>
+<th>自然连接当“选择”</th>
+<th>除法处理“包含”</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="\image\2-1-6-1.jpg" width="800"></td>
+<td><img src="\image\2-1-6-2.jpg" width="800"></td>
+</tr>
+<tr>
+<td>以投影出来的Sno值为条件在S表中选出相应学生数据</td>
+<td>要选出包含所有课程的，所以除以所有Cno的值集合</td>
+</tr>
+</tbody>
+</table>
+<p>·插入删除实例</p>
+<table>
+<thead>
+<tr>
+<th>插入和删除</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="\image\2-1-6-3.jpg" width="800"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="17">1.7 元素关系演算和域关系演算</h3>
+<p>·不考</p>
+<p><br></p>
+<h2 id="2sql">2.关系数据库标准语言SQL语言</h2>
+<p>·SQL的四大功能：数据定义、数据操纵、数据控制、嵌入式SQL</p>
+<h3 id="21-sql">2.1 SQL语言的特点</h3>
+<p>·综合统一：集数据定义语言DDL、数据操纵语言DML、数据控制语言DCL于一体</p>
+<p>·高度非过程化：只需要指定操作对象和操作内容，不必关心执行过程</p>
+<p>·面向集合的操作方式</p>
+<p>·以同一种语法结构提供两种使用方式（交互式、嵌入式）</p>
+<p>·语言简洁，易学易用</p>
+<table>
+<thead>
+<tr>
+<th>SQL功能</th>
+<th>动词</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据查询</td>
+<td>SELECT</td>
+</tr>
+<tr>
+<td>数据定义</td>
+<td>CREATE、ALTER、DROP</td>
+</tr>
+<tr>
+<td>数据操纵</td>
+<td>SELECT、INSERT、UPDATE、DELETE</td>
+</tr>
+<tr>
+<td>数据控制</td>
+<td>GRANT、REVOKE</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-sql">2.2 SQL中的基本概念：基本表和视图</h3>
+<p><strong>基本表</strong>：一个关系模式对应一个基本表</p>
+<p><strong>视图</strong>：从一个或多个基本表中导出的表，仅有逻辑上的定义，不实际存储数据，是一种虚表</p>
+<p><img src="\image\2-2-2-1.jpg" width="500"></p>
+<h3 id="23-sqlddl">2.3 SQL的DDL语句、定义基本表和视图</h3>
+<p>SQL的数据定义语句</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>创建</th>
+<th>删除</th>
+<th>修改</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>模式</td>
+<td>CREATE SCHEMA</td>
+<td>DROP SCHEMA</td>
+<td></td>
+</tr>
+<tr>
+<td>表</td>
+<td>CREATE TABLE</td>
+<td>DROP TABLE</td>
+<td>ALTER TABLE</td>
+</tr>
+<tr>
+<td>视图</td>
+<td>CREATE VIEW</td>
+<td>DROP VIEW</td>
+<td></td>
+</tr>
+<tr>
+<td>索引</td>
+<td>CREATE INDEX</td>
+<td>DROP INDEX</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>·一个数据库中可以建立多个模式，一个模式下通常包含多个表、视图、索引等数据库对象</p>
+<pre><code class="language-sql">//定义学生数据库模式SST，用户名为SDBA
+CREATE SCHEMA SST AUTHORIZATION SDBA;
+
+//创建模式时定义模式元素
+CREATE SCHEMA AUTHORIZATION ross
+  CREATE TABLE t1(c1 INT PRIMARY KEY, c2 INT REFERENCES t2(c1))
+  CREATE TABLE t2(c1 INT PRIMARY KEY, c2 INT REFERENCES t1(c1))
+
+//删除模式
+DROP SCHEMA SST RESTRICT;//限制式，如果模式中存在对象，则不能删除
+DROP SCHEMA SST CASCADE;//级联式，删除模式及其所有对象
+
+//建立学生表Student、课程表Course、选课表SC
+CREATE TABLE Student(
+  Sno CHAR(10) NOT NULL UNIQUE,
+  Sname CHAR(8),
+  Sage INT,
+  Ssex CHAR(2),
+  Sdept CHAR(12),
+
+  //CONSTRANTS定义列级或表级约束
+  CONSTRANTS C1 CHECK (Ssex IN ('M', 'F')),
+  CONSTRANTS S_PK PRIMARY KEY (Sno)
+  );
+
+CREATE TABLE Course(
+  Cno CHAR(10) NOT NULL,
+  Cname CHAR(8),
+  Ccredit INT,
+  CONSTRANTS C_PK PRIMARY KEY (Cno)
+  );
+
+CREATE TABLE SC(
+  Sno CHAR(10) NOT NULL,
+  Cno CHAR(10) NOT NULL,
+  Grade INT CHECK (Grade BETWEEN 0 AND 100),
+  CONSTRANTS SC_PK PRIMARY KEY (Sno, Cno),
+  CONSTRANTS SC_FK1 FOREIGN KEY (Sno) REFERENCES Student(Sno),
+  CONSTRANTS SC_FK2 FOREIGN KEY (Cno) REFERENCES Course(Cno)
+  );
+//PRIMARY KEY 和 FOREIGN KEY 前面的CONSTRANTS是可选的
+
+//显式指定表的模式
+CREATE TABLE SST.Student(……);
+
+//修改基本表
+//在学生列表中加一列班级
+ALTER TABLE Student ADD Cclass CHAR(10);
+
+//修改学生表中姓名列长度为20
+ALTER TABLE Student ALTER Sname CHAR(20);
+ALTER TABLE Student MODIFY Sname CHAR(20);
+
+//删除学生表中姓名列
+ALTER TABLE Student DROP Sname RESTRICT;//同样可加RESTRICT或CASCADE
+
+</code></pre>
+<p><img src="\image\2-2-3-1.jpg" width="800"></p>
+<h3 id="24">2.4 唯一索引和聚集索引、定义索引</h3>
+<p>·<strong>索引</strong>：是一种数据结构，提供不同的存取路径，可以加快查询速度，更新和维护由DBMS自动完成，系统在存储数据时会自动选择是否使用索引；可以建立在一列或多列上（用逗号分隔），升序ASC，降序DESC，缺省值ASC；代价有占更多空间、对数据修改花更长时间；属于内模式范畴</p>
+<p>·<strong>聚集索引</strong>：索引次序与基本表中元组的物理次序一致，一个基本表上最多只能建立一个聚集索引，可以包含多个列，适用于很少对基表进行增删操作、很少对其中的变长列进行修改操作</p>
+<pre><code class="language-sql">//在学生表的学号列上按升序建立惟一索引
+CREAATE UNIQUE INDEX S_SNO ON Student(Sno);
+
+//在学生表上按班级降序、年龄升序建立索引
+CREATE INDEX S_CLASS_AGE ON Student(Cclass DESC, Sage ASC);
+
+//聚集索引
+CREATE CLUSTERED INDEX Stusname ON Student(Sname);
+//Student表中的记录将按照Sname的升序存放
+
+//删除索引
+DROP INDEX S_SNO;
+</code></pre>
+<h3 id="25-sql">2.5 SQL查询</h3>
+<table>
+<thead>
+<tr>
+<th>一般格式</th>
+<th>基本结构</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="\image\2-2-5-1.jpg" width="800"></td>
+<td><img src="\image\2-2-5-2.jpg" width="800"></td>
+</tr>
+</tbody>
+</table>
+<h4 id="_2">单表查询</h4>
+<pre><code class="language-sql">
+//查询计算机系学生的学号和姓名
+SELECT Sno, Sname FROM Student WHERE Sdept = '计算机系';
+
+//查询年龄在29到25岁之间的学生信息
+SELECT * FROM Student WHERE Sage BETWEEN 29 AND 25;
+
+//查询已经选修了课程的学生学号，并按学号升序排序，DIISTINCT消除重复行，作用范围是所有目标列（写一遍就够了
+SELECT DISTINCT Sno FROM SC ORDER BY Sno;
+
+//查询每门课的选修人数
+SELECT Cno, COUNT(*) FROM SC GROUP BY Cno;
+
+//查询均分在85分以上的学生学号和平均成绩
+SELECT Sno, AVG(Grade) FROM SC GROUP BY Sno HAVING AVG(Grade) &gt;= 85;
+
+//查询成绩在75~85分之间的学生学号和成绩
+SELECT Sno, Grade FROM SC WHERE Grade &gt;= 75 AND Grade &lt;= 85;
+
+//查询年龄为19岁的所有姓李的学生姓名
+SELECT Sname FROM Student WHERE Sname LIKE '李%' AND Sage = 19;
+
+//查询缺考学生的学号和课程号
+SELECT Sno, Cno FROM SC WHERE Grade IS NULL;
+
+//查询经过计算的值
+
+//查询全体学生的姓名、出生年份和所在系，要求用小写字母表示所在系名
+SELECT Sname, 'Year of Birth:', 2025-Sage, Lower(Sdept) FROM Student;
+
+//使用别名改变查询结果的列标题：
+SELECT Sname AS Name, 
+    'Year of Birth:' Birth, 
+    2025-Sage BIRTHYEAR,
+    Lower(Sdept) DEPARTMENT
+FROM Student;
+</code></pre>
+<h5 id="where">where语句常用查询条件</h5>
+<p><img src="\image\2-2-5-3.jpg" width="800"></p>
+<p>·IS NULL不能用=NULL替代，SQL允许特殊值NULL称作控制，不同于空白或零值，表示未知、不适用、保留（无权知道）的值，和任何值进行算术运算结果仍为空值</p>
+<p>·多重条件查询，AND的优先级高于OR，可以用括号改变优先级，可以用来实现IN或BETWEEN AND</p>
+<h5 id="_3">聚集函数</h5>
+<table>
+<thead>
+<tr>
+<th>聚集函数</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="\image\2-2-5-4.jpg" width="800"></td>
+<td><img src="\image\2-2-5-5.jpg" width="800"></td>
+</tr>
+</tbody>
+</table>
+<h5 id="_4">对查询结果分组</h5>
+<table>
+<thead>
+<tr>
+<th>分组</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="\image\2-2-5-6.jpg" width="800"></td>
+<td><img src="\image\2-2-5-7.jpg" width="800"></td>
+</tr>
+</tbody>
+</table>
+<h5 id="wherehaving">WHERE和HAVING的区别</h5>
+<table>
+<thead>
+<tr>
+<th>区别</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="\image\2-2-5-8.jpg" width="800"></td>
+<td><img src="\image\2-2-5-9.jpg" width="800"></td>
+</tr>
+</tbody>
+</table>
+<h4 id="_5">连接查询</h4>
+<p>·连接条件中各字段必须是可比的</p>
+<h5 id="_6">普通连接</h5>
+<pre><code class="language-sql">//等值连接
+//查询每个学生及其选修课程的情况
+SELECT Student.*, SC.* FROM Student, SC WHERE Student.Sno = SC.Sno;
+//引用唯一属性名时可以省略表名
+
+//自然连接
+SELECT * FROM Student NATURAL JOIN SC;
+//或者把属性不重复地都列出来
+
+//非等值连接
+//等号改为比较运算符，如&lt;、&gt;、&gt;=、&lt;=
+
+//自身连接
+//查询每一门课的间接先修课（即先修课的先修课）
+SELECT FIRST.Cno, SECOND.CPNO FROM COURSE AS FIRST, COURSE AS SECOND
+WHERE FIRST.CPno = SECOND.Cno
+
+</code></pre>
+<h5 id="_7">内连接</h5>
+<p>·使用比较运算符=, &gt;, &lt;等</p>
+<p>·根据每个表共有的列的值匹配两个表中的行</p>
+<p><img src="\image\2-2-5-10.jpg" width="800"></p>
+<h5 id="_8">外连接</h5>
+<p>·普通连接操作只输出满足链接条件的元组，外连接操作以指定表为链接主题，将主体表中不满足连接条件的元组一并输出</p>
+<p>·LEFT, RIGHT, FULL OUTER JOIN</p>
+<pre><code class="language-sql">//查询每个学生的选课情况，包括没有选课的
+SELECT Student.Sno,Sname,Ssex,Sage,Sdept,Cno,Grade 
+FROM Student LEFT OUTER JOIN SC ON (Student.Sno = SC.Sno)
+</code></pre>
+<h5 id="_9">复合条件连接</h5>
+<p>·WHERE子句中可以包含多个条件，用AND或OR连接</p>
+<h5 id="_10">多表连接</h5>
+<p>·涉及两个以上的表的连接</p>
+<h4 id="_11">嵌套查询</h4>
+<p>·一个SELECT-FROM-WHERE语句称为一个查询块，将一个查询嵌套在另一个查询块的WHERE子句或HAVING短句</p>
+<p>·求解方法：<strong>不相关子查询</strong>（子查询查询条件不依赖父查询）从里向外逐层处理，<strong>相关子查询</strong>先取外层查询中表的第一个元组，处理内层，若为真放入结果表，然后再取外层表的下一个元组，重复直到外层表全部检查完</p>
+<p><font color=red>·子查询的限制：不能使用ORDER BY子句 </font></p>
+<h5 id="in">带有IN谓词的子查询</h5>
+<table>
+<thead>
+<tr>
+<th>第一步</th>
+<th>第二步</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="\image\2-2-5-11.jpg" width="800"></td>
+<td><img src="\image\2-2-5-12.jpg" width="800"></td>
+</tr>
+</tbody>
+</table>
+<p>·父查询和子查询中的表均可以使用别名（例如在Student后面加S1，在Sdept前加S1.）</p>
+<h5 id="_12">带有比较运算符的子查询</h5>
+<p>·内层返回单值时，可用比较运算符（例如一个学生只可能在一个系学习，并且必须属于一个系，则上面例子可以用=替代IN）</p>
+<p><font color=red>·子查询一定要跟在比较符之后</font></p>
+<h5 id="anyall">带有ANY和ALL谓词的子查询</h5>
+<table>
+<thead>
+<tr>
+<th>用ANY谓词</th>
+<th>用聚集函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="\image\2-2-5-13.jpg" width="800"></td>
+<td><img src="\image\2-2-5-14.jpg" width="800"></td>
+</tr>
+</tbody>
+</table>
+<h5 id="existsnot-exists">带有EXISTS和NOT EXISTS谓词的子查询</h5>
+<p>·不返回任何数据，只产生true或false</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="\image\2-2-5-15.jpg" width="800"></td>
+<td><img src="\image\2-2-5-16.jpg" width="800"></td>
+</tr>
+</tbody>
+</table>
+<p>·用EXIST实现全称量词：所有课都选修了=不存在某门课他是没选的</p>
+<h6 id="exist">用EXIST实现逻辑蕴含</h6>
+<table>
+<thead>
+<tr>
+<th>原理</th>
+<th>思路</th>
+<th>代码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="\image\2-2-5-19.jpg" width="500"></td>
+<td><img src="\image\2-2-5-20.jpg" width="500"></td>
+<td><img src="\image\2-2-5-21.jpg" width="500"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="26-sql">2.6 SQL数据更新：插入、删除、修改</h3>
+<h3 id="_13">插入</h3>
+<p>·两种方式：插入单个元组、插入子查询结果</p>
+<pre><code class="language-sql">//在学生表中插入一个学生元组
+INSERT INTO Student(Sno, Sname, Sage, Ssex, Sdept) VALUES ('20190101', '张三', 20, 'M', '计算机系');
+
+//没有指定属性列：表示擦混入的是一条完整的元组，且属性列顺序一致
+INSERT INTO Student VALUES('20190101', '张三', 20, 'M', '计算机系')
+
+//将子查询结果插入指定表中
+//计算计算机系每个学生的平均成绩并保存在CS-AVG表中
+INSERT INTO CS-AVG(Sno, Grade)
+  SELECT Sno, AVG(Grade) FROM SC
+    WHERE Sno IN(
+        SELECT Sno FROM Student WHERE Sdept = '计算机系'
+    )
+    GROUP BY Sno;
+</code></pre>
+<p>·DBMS在执行插入语句时，会检查修改操作是否破坏表上已定义的完整性规则</p>
+<h3 id="_14">修改</h3>
+<p>·UPDATE表示修改操作，SET指定修改方式，WHERE指定要修改的元组</p>
+<p>·DBMS在执行修改语句时，会检查所插入元组是否破坏表上已定义的完整性规则（实体完整性、<font color=red>主键不允许修改</font>、用户定义的完整性）</p>
+<pre><code class="language-sql">//将所有选修了数据库课的学生的成绩清空
+UPDATE SC SET Grade=NULL WHERE Cno IN(SELECT Cno FROM Course WHERE Cname = '数据库')
+</code></pre>
+<h3 id="_15">删除</h3>
+<p>·删除指定表中满足WHERE子句条件的元组</p>
+<p>·DBMS会检查完整性规则</p>
+<pre><code class="language-sql">//删除所有选修了数据库课的学生的选课信息
+DELETE FROM SC WHERE Cno IN(SELECT Cno FROM Course WHERE Cname = '数据库')
+</code></pre>
+<h3 id="27">2.7 视图消解、视图查询</h3>
+<p><strong>视图</strong>：对应于外模式，是从一个或几个基本表（或视图）导出的虚表，定义是递归的，DBMS只存放视图的定义不存放视图的数据，基表中数据发生变化从视图查询出的数据也改变，实际上提供了一种观察数据的逻辑窗口，对视图的操作意味着对基表进行相应的操作</p>
+<pre><code class="language-sql">
+//建立基于多个基表的视图
+//建立计算机系选修了C2课的学生姓名和成绩的视图，并要求数据更新时进行检查
+CREATE VIEW CS_SC(Sno, sname, Grade)
+    AS SELECT Student.Sno, Sname, Grade FROM Student, SC
+    WHERE Student.Sno = SC.Sno AND SC.Cno = 'C2' AND Sdept = '计算机系';
+    WITH CHECK OPTION;
+//DBMS创建视图时并不执行SELECT语句，只有对视图进行操作时才按照定义生成数据
+
+//以SELECT* 方式创建的视图可扩充性差，应尽可能避免
+
+//视图的列名与SELECT后的列名相对应，可以全省略/全写，有聚集函数或表达式、相同列名、取新名字时必须写
+
+//删除视图
+DROP VIEW CS_SC;
+
+</code></pre>
+<p><strong>视图查询</strong>：DBMS有两种方法：实体化视图和视图消解法</p>
+<p><strong>实体化视图</strong>：1.有效性检查；2.执行视图定义，将试图临时实体化，生成临时表；3.转化为查询临时表；4.查询完毕删除临时表</p>
+<p><strong>视图消解法</strong>：1.进行有效性检查，查询的表、视图存在则取出视图定义；2.把视图定义中的子查询与用户的查询结合起来，转换成等价的对基本表的查询；3.执行修正后的查询</p>
+<table>
+<thead>
+<tr>
+<th>实例1</th>
+<th>实例2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="\image\2-2-7-1.jpg" width="800"></td>
+<td><img src="\image\2-2-7-2.jpg" width="800"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>视图更新</strong>：转化为对基本表的操作。<font color=red>有些视图不可更新</font>，因为不能唯一地有意义地转化为对相应基本表的更新</p>
+<p><strong>行列子集视图</strong>：仅在一个表上取其行列值且其中包含了候选键，这样形成的视图都是可更新的，除此之外的视图更新都会受限制</p>
+<table>
+<thead>
+<tr>
+<th>可更新实例</th>
+<th>不可更新实例1</th>
+<th>不可更新实例2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="\image\2-2-7-3.jpg" width="500"></td>
+<td><img src="\image\2-2-7-4.jpg" width="500"></td>
+<td><img src="\image\2-2-7-5.jpg" width="500"></td>
+</tr>
+</tbody>
+</table>
+<p>视图的优点：1.在且只能在一定程度上提供了数据的逻辑独立性，可通过对视图重新定义使用户的外模式保持不变；2.简化了用户的数据结构，简化用户的操作，更清晰地表达查询；3.使用户以不同角度看待相同的数；4.提供了安全保护功能</p>
+<h3 id="28-sql">2.8 SQL不同对象的权限</h3>
+<p>·SQL权限由DBA和表的建立者定义</p>
+<p>·不同的数据库对象有不同的操作权限</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据库</td>
+<td>CREATE TABLE</td>
+</tr>
+<tr>
+<td>表</td>
+<td>SELECT、INSERT、UPDATE、DELET; ALTER、INDEX</td>
+</tr>
+<tr>
+<td>属性列</td>
+<td>SELECT、INSERT、UPDATE、DELETE</td>
+</tr>
+<tr>
+<td>视图</td>
+<td>SELECT、INSERT、UPDATE、DELETE</td>
+</tr>
+</tbody>
+</table>
+<p><strong>授权</strong>和<strong>权限回收</strong></p>
+<pre><code class="language-sql">//把对表SC的查询权限授予所有用户
+GRANT SELECT ON TABLE SC TO PUBLIC;
+
+//把对Student表和Course表的全部权限授予用户U1和U2
+GRANT ALL PRIVILEGES ON TABLE Student, Course TO U1, U2;
+
+//把用户U4修改学生学号的权限回收
+REVOKE UPDATE(Sno) ON TABLE Student FROM U4;
+
+</code></pre>
+<h3 id="29-sql">2.9 嵌入式SQL的一些基本概念</h3>
+<p>嵌入式SQL：SQL是非过程性语言，事务处理一般是过程性，需要应用高级语言。SQL负责数据库的操纵，宿主语言负责控制程序流程和数据的输入输出。</p>
+<h4 id="sql">嵌入式SQL的编译</h4>
+<p>预编译：所有SQL语句必须加前缀EXEC SQL，有的还要求末尾加END-EXEC</p>
+<h4 id="_16">数据库和主语言程序间的通信</h4>
+<p><strong>通信区</strong>：在SQL中设有一通信区SQLCA，是一个数据结构，包含描述DBMS当前工作状态的信息，应用程序和用户通过SQLCA了解数据库的执行情况。</p>
+<p>·其中状态指示单元SQLCODE用于存放SQL语句的执行结果，可以知道执行情况是否成功</p>
+<p>·应用程序引用SQLCA，需要加以说明，格式为：EXEC SQL INCLUDE SQLCA</p>
+<h4 id="_17">数据库和主语言程序间的数据交换</h4>
+<p><strong>主变量</strong>：在SQL语句中使用的主语言程序变量，也叫宿主变量，嵌入式SQL通过主变量与主语言程序进行数据交换，按用途分为输入变量和输出变量。在SQL语句中主变量前要加冒号作为标志以区别于数据库对象，在使用前需要用DECKARE声明，格式为：</p>
+<pre><code class="language-sql">EXEC SQL BEGIN DECLARE SECTION;
+    CHAR Sno[10];
+    ……
+EXEC SQL END DECLARE SECTION;
+</code></pre>
+<h4 id="_18">面向集合和面向记录的协调</h4>
+<p><strong>游标</strong>：SQL面向集合，一条语句可以产生或处理多条记录；主语言面向记录，一组主变量一次只能存放一条记录，无法满足SQL向应用程序输出数据的要求，因此嵌入式QL引入游标来协调，是一个数据缓冲区，存放SQL语句的执行结果，包含：1.由定义该游标的SELECT语句返回的结果集；2.指向结果集中某一行的指针</p>
+<h3 id="210-select">2.10 不用游标和使用游标的SELECT语句</h3>
+<table>
+<thead>
+<tr>
+<th>不用游标的SELECT语句</th>
+<th>用游标的SELECT语句</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="\image\2-2-10-1.jpg" width="800"></td>
+<td><img src="\image\2-2-10-2.jpg" width="800"></td>
+</tr>
+<tr>
+<td>查询结果为单记录</td>
+<td>查询结果为多条记录</td>
+</tr>
+<tr>
+<td></td>
+<td>1.定义游标：建立右边和SELECT语句之间的关系，不执行SELECT</td>
+</tr>
+<tr>
+<td></td>
+<td>2.打开游标：执行与游标关联的SQL查询语句，并将结果放入缓冲区，此时游标指针指向查询结果集中第一条记录之前的位置</td>
+</tr>
+<tr>
+<td></td>
+<td>3.推动游标：把游标向前推动一个位置，取一条记录</td>
+</tr>
+<tr>
+<td></td>
+<td>4.关闭游标：释放游标占用的资源，不再和原来的查询结果集相联系</td>
+</tr>
+</tbody>
+</table>
+<h3 id="211-sql">2.11 熟练掌握各个SQL语句的语法、关键词的含义</h3>
+<h2 id="3">3.关系系统及其查询优化</h2>
+<h3 id="31">3.1 查询处理的过程，优化的意义和必要性</h3>
+<p>·查询方式：解释方式、编译方式</p>
+<p>·查询处理过程；</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.查询分析</td>
+<td>词法、语法、语义分析</td>
+</tr>
+<tr>
+<td>2.查询检查</td>
+<td>安全性、完整性、有效性检查</td>
+</tr>
+<tr>
+<td>3.建立查询的内部表示</td>
+<td>语法树</td>
+</tr>
+<tr>
+<td>4.查询优化</td>
+<td>选择高效策略</td>
+</tr>
+<tr>
+<td>5.查询计划执行</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>·必要性：由于关系数据库语言的非过程性，用户和应用程序一般不考虑如何最好地表达查询、如何最好地实现查询，因此DBMS不许有专门的查询优化模块</p>
+<h3 id="32">3.2 理解关系操作的基本实现算法</h3>
+<h4 id="_19">选择</h4>
+<p>·顺序扫描法、二分查找法、索引扫描法（散列扫描法）（通过索引找到元组指针，再通过指针检索元组）</p>
+<p>·合取选择条件：首选选择<strong>选择性</strong>（满足条件的元组数占关系中元组总数比例）小的条件检索元组</p>
+<p>·析取选择条件：优化处理难度大，只要任何一个条件没索引就只能使用顺序扫描法，尽量避免使用or</p>
+<h4 id="_20">连接</h4>
+<p>·查询处理中最耗时的操作之一，开销大</p>
+<p><strong>嵌套循环法</strong>：类似顺序扫描法，最简单最直接，适用于任何条件的连接，对关系R（外循环）中的每个元组t，检索关系S（内循环）中的每个元组s，判断是否满足连接条件t[A]=s[B]。</p>
+<p><strong>索引嵌套循环法</strong>：如果关系S的属性B上存在索引，可通过索引查找满足t[B]=s[A]的所有元组，而不必扫描S中所有元组</p>
+<p><strong>排序合并法</strong>：适用于等值连接和自然连接，R和S按照属性A和B排序，同时扫描，匹配A和B上相同的元组，连接起来</p>
+<p><strong>散列连接法</strong>：类似于排序合并法，使用一个hash函数将R和S划分成多个具有相同散列值的元组集合</p>
+<h4 id="_21">投影</h4>
+<p>·选取关系的某些列，只输出这些列的值，如果包含主键可以直接执行，否则要消除重复元组</p>
+<h4 id="_22">集合运算</h4>
+<p>·并、差、交类似排序合并法</p>
+<p>·笛卡尔积使用嵌套循环法</p>
+<h3 id="33">3.3 理解查询优化步骤，估计询执行代价</h3>
+<p>·从多个执行策略中选择合适的执行策略来执行</p>
+<h4 id="_23">计算处理时间：</h4>
+<p>实例：查询选修“DataBase”课程的学生成绩</p>
+<p><img src="\image\2-3-3-1.jpg"></p>
+<p>假设：</p>
+<p>SC：10000条，Course：100条，满足条件的元组为100个</p>
+<p>内存被划分为6块，每块能装10个Course元组或100个SC元组。每次在内存中放5块Course元组和1块SC元组</p>
+<p>1.首先在内存中尽可能多地装入Course表，留出一块存放SC的元组</p>
+<p>2.然后，把SC中的每个元组和Course中的每个元组连接, 完成之后，继续读入下一块SC的元组，同样和内存中Course的每个元组连接，依此类推，直到SC表的元组全部处理完毕。</p>
+<p>3.接下来，再把Course表中没有装入的元组尽可能多地装入内存，同样逐块装入SC表的元组去作元组的连接，直到Course表的所有元组全部进行完连接。</p>
+<p><strong>一、Course×SC</strong>：</p>
+<p><strong>读取的总块数</strong></p>
+<p>=读Course表的块数+读SC表的块数</p>
+<p>=读Course表的块数+读SC表遍数*每遍块数</p>
+<p>=100/10 + 100/(10*5) * 10000/100</p>
+<p>（每次内存中5块能装10*5=50个Course元组，故连接完一条SC需要读100/50=2遍，遍数是这个意思；每遍块数就跟求Course块数一样用总记录条数/一块能装的条数）</p>
+<p>=210</p>
+<p><font color=red>读数据的时间</font> = 210/20 = 10.5s（假设每秒读写20块）</p>
+<p>中间结果的元组数=10000*100=10^6</p>
+<p><font color=red>写中间结果的时间</font> = 10^5/20=5000s（每块10个元组）</p>
+<p><strong>二、选择操作</strong></p>
+<p>将已经连接好的10^6个元组重新读入内存，按选择条件选取满足条件的元组，为100个。忽略内存处理时间，选择操作的时间开销为：<font color=red>读数据的时间</font>和写文件一样=5000s</p>
+<p><strong>三、投影操作</strong></p>
+<p>仍为100个元组，可以放在内存中，<font color=red>不需要做I/O操作</font>，忽略内存处理时间，因此<font color=red>这一步操作时间可以忽略</font></p>
+<p><strong>四、总时间代价</strong> = 10.5s + 5000s + 5000s</p>
+<table>
+<thead>
+<tr>
+<th>方案二</th>
+<th>方案三</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="\image\2-3-3-2.jpg" width="500"></td>
+<td><img src="\image\2-3-3-3.jpg" width="500"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="34">3.4 理解查询优化的一般准则</h3>
+<p>·集中式数据库I/O代价是最主要的</p>
+<p>·分布式数据库通信代价是最主要的</p>
+<h3 id="35">3.5 代数优化，画关系代数表达式的语法树，优化语法树</h3>
+<p>·通过关系代数表达式的等价变换规则完成优化，也成规则优化（逻辑优化）</p>
+<p>·主要思想：<font color=red> 对查询的代数表达式进行适当的等价变换，改变相关操作的先后执行顺序 </font></p>
+<p>·示例</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SQL语句表达</td>
+<td>关系代数表达式</td>
+</tr>
+<tr>
+<td><img src="\image\2-3-5-1.jpg" width="800"></td>
+<td><img src="\image\2-3-5-2.jpg" width="800"></td>
+</tr>
+<tr>
+<td>画出语法树</td>
+<td>1.选择操作下移</td>
+</tr>
+<tr>
+<td><img src="\image\2-3-5-3.jpg" width="800"></td>
+<td><img src="\image\2-3-5-4.jpg" width="800"></td>
+</tr>
+<tr>
+<td>2.投影操作下移</td>
+<td>3.选择与笛卡尔积合并</td>
+</tr>
+<tr>
+<td><img src="\image\2-3-5-5.jpg" width="800"></td>
+<td><img src="\image\2-3-5-6.jpg" width="800"></td>
+</tr>
+<tr>
+<td>4.操作分组</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="\image\2-3-5-7.jpg" width="800"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tracking", "navigation.index", "navigation.sections", "navigation.expand", "navigation.top", "content.code.copy", "search.highlight"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>
