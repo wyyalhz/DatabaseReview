@@ -1,0 +1,41 @@
+site_name: BIT数据库期末复习
+site_author: wyyalhz
+
+theme:
+  name: material
+  language: 'zh'
+
+  palette:
+    - scheme: default        # 白天模式
+      primary: indigo        # 主色调（导航栏颜色）
+      accent: orange         # 强调色（如链接/按钮）
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate          # 夜间模式
+      primary: indigo
+      accent: orange
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+  features:
+    # - navigation.instant       # 页面跳转无刷新（SPA 效果）
+    - navigation.tabs # 启用顶部标签栏
+    - navigation.tracking      # 启用页面浏览跟踪
+    - navigation.index       # 启用目录索引
+    - navigation.sections # 启用侧边栏
+    - navigation.expand        # 展开所有侧边栏菜单
+    - navigation.top          # 返回顶部按钮
+    - content.code.copy       # 代码区复制按钮
+    - search.highlight        # 搜索结果高亮
+ 
+
+nav:
+  - 课本复习:
+    - 课本总览: BookReview/overview.md
+    - 一、数据库的基本概念: BookReview/part1.md
+    - 二、关系数据库: BookReview/part2.md
+    - 三、数据控制: BookReview/part3.md
+    - 四、数据库设计: BookReview/part4.md
+    - 五、数据库新技术: BookReview/part5.md
