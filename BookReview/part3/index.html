@@ -821,6 +821,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="4.4 可串行化调度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      调度的冲突等价性
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -1335,6 +1350,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="4.4 可串行化调度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      调度的冲突等价性
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -1832,6 +1862,18 @@ BEGIN TRANSACTION
 <p>·不同的事务调度可能会产生不同的结果，多个事务交叉执行（并发）结果<font color=red>与某个穿行执行结果相同</font>，则正确，该调度称为可串行化调度。<font color=red>可串行化是并发事务正确调度的准则</font></p>
 <p><img alt="3-4-4-1.jpg" src="../assets/images/3-4-4-1.jpg" /></p>
 <p>·当前仅当优先图中没有回路时，调度S才是可串行化的</p>
+<h4 id="_10"><font color=red><strong>调度的冲突等价性</strong></font></h4>
+<p>·冲突操作：不同事务对同一数据项进行的两个操作中，有一个写操作，两者即为冲突操作</p>
+<p>·能推出两个调度冲突等价的：</p>
+<ul>
+<li>
+<p>1.对任意一对冲突操作<Oi, Oj>，在调度S1中Oi优先于Oj而在调度S2中Oi也优先于Oj</p>
+</li>
+<li>
+<p>2.一个调度S能通过一系列飞冲突操作执行顺序的交换变成调度S1</p>
+</li>
+</ul>
+<p><strong>冲突可串行化调度</strong>：一个调度冲突等价于某个串行调度</p>
 <h3 id="45">4.5 两段封锁协议</h3>
 <p><strong>活锁与死锁</strong></p>
 <p><img alt="3-4-5-1.jpg" src="../assets/images/3-4-5-1.jpg" /></p>
