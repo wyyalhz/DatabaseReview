@@ -930,7 +930,12 @@
 - 若R∈3NF，R的每一个非主属性既不部分函数依赖于候选键，也不传递函数依赖于候选键
 - 没有考虑主属性间的函数依赖问题</p>
 <p><strong>BCNF范式</strong>：R∈1NF，而且R中没有任何属性传递依赖于R中的任一关键字，则R∈BCNF</p>
-<p><font color=red>如果R∈3NF且R只有一个候选键，则R∈BCNF</p>
+<p><font color=red>不但排除了非主属性对主属性的传递依赖，也排除了主属性间的传递依赖</font></p>
+<ul>
+<li>例：2元3NF一定是BCNF，因为不可能存在传递依赖</li>
+</ul>
+<p>·一个更直观的等价的BCNF定义：R∈1NF，F是R上的函数依赖集，对于F中的每一个函数依赖X→Y，必有X是R的一个超键（候选键），则R∈BCNF</p>
+<p><font color=red>如果R∈3NF且R只有一个候选键，则R∈BCNF</font></p>
 <h3 id="16-3nf">1.6 判断一个关系模式属于几范式、<font color=red>将关系模式规范化到3NF</font></h3>
 <p>模式分解法（合成法）生成3NF</p>
 <table>
