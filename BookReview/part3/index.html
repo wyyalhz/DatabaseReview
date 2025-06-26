@@ -584,7 +584,25 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2.5 通过触发器定义完整性约束条件">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6 违约处理具体措施
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27-sql-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7 SQL Server中完整性的实现
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.7 SQL Server中完整性的实现">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1080,7 +1098,25 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2.5 通过触发器定义完整性约束条件">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6 违约处理具体措施
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27-sql-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7 SQL Server中完整性的实现
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.7 SQL Server中完整性的实现">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1563,45 +1599,42 @@ ALTER TABLE Student ADD CONSTRAINT C3 CHECK (Sage &lt; 40);
 <p>8.引用
 REFERENCING NEW | OLD ROW AS &lt;变量&gt;，行级触发器，在过程体中引用事件之后的新值和事件之前的旧值</p>
 <p>REFERENCING NEW | OLD TABLE AS &lt;变量&gt;，语句级触发器，<font color=red>仅适用于AFTER触发器</font>，在过程体中引用整个表的新值和旧值</p>
-<p>·实例
-```sq;
-//定义一个BEFORE行级触发器，为教师表Teacher定义完整性规则“教授的工资不得低于4000元，如果低于4000元，自动改为4000元”</p>
-<p>CREATE TRIGGER Insert_Or_Update_Sal
+<p>·实例</p>
+<pre><code class="language-sql">//定义一个BEFORE行级触发器，为教师表Teacher定义完整性规则“教授的工资不得低于4000元，如果低于4000元，自动改为4000元”
+
+CREATE TRIGGER Insert_Or_Update_Sal
   BEFORE INSERT OR UPDATE ON Teacher
   FOR EACH ROW
   BEGIN
     IF (new.Job = '教授') AND (new.Salary &lt; 4000)
       THEN new.Sal := 4000;//:=表示赋值
     END IF;
-  END;</p>
-<p>//将每次对表Student的插入操作所增加的学生个数记录到表StudentInsertLog中</p>
-<p>CREATE TRIGGER Student_Count(
+  END;
+
+//将每次对表Student的插入操作所增加的学生个数记录到表StudentInsertLog中
+
+CREATE TRIGGER Student_Count(
     AFTER INSERT ON Student
     REFERENCING NEW TABLE AS Delta
     FOR EACH STATEMENT
       INSERT INTO StudentInsertLog(Numbers)
       SELECT COUNT(*) FROM Delta;
-)</p>
-<p>//删除触发器
-DROP TRIGGER Student_Count ON Student;</p>
-<pre><code>
-### 2.6 违约处理具体措施
+)
 
-·触发器执行顺序：
+//删除触发器
+DROP TRIGGER Student_Count ON Student;
+
+</code></pre>
+<h3 id="26">2.6 违约处理具体措施</h3>
+<p>·触发器执行顺序：
 - 1.执行该表上的BEFORE触发器
 - 2.激活触发器的SQL语句（触发事件）
-- 3.执行该表上的AFTER触发器
-
-·如果激活触发器的SQL语句违反了约束条件，则不会执行AFTER触发器
-
-### 2.7 SQL Server中完整性的实现
-
-·&lt;font color=red&gt;使用约束CONSTRANT优先于使用触发器、规则和默认值&lt;/font&gt;：
-
-·&lt;font color=red&gt;CHECK约束中不能包含子查询&lt;/font&gt;：
-
-```sql
-ALTER TABLE Employees 
+- 3.执行该表上的AFTER触发器</p>
+<p>·如果激活触发器的SQL语句违反了约束条件，则不会执行AFTER触发器</p>
+<h3 id="27-sql-server">2.7 SQL Server中完整性的实现</h3>
+<p>·<font color=red>使用约束CONSTRANT优先于使用触发器、规则和默认值</font>：</p>
+<p>·<font color=red>CHECK约束中不能包含子查询</font>：</p>
+<pre><code class="language-sql">ALTER TABLE Employees 
   ADD CONSTRAINT CK_birthdate 
   CHECK (BirthDate &gt; '01-01-1900' AND BirthDate &lt; getdate());
 
